@@ -10,9 +10,9 @@ public class Conexionn {
         Connection cn = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String connectionUrl = "jdbc:sqlserver://172.16.1.3;database=soluflex_faro;";
-            String userName = "sa";
-            String password = "4342649flex";
+            String connectionUrl = "jdbc:sqlserver://<URL>;database=<DATABASE>;";
+            String userName = "<USER-NAME>";
+            String password = "<PASSWORD>";
             cn = DriverManager.getConnection(connectionUrl,userName,password);
         }
         catch (SQLException ex) {
