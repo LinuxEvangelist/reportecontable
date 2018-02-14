@@ -1,7 +1,6 @@
 package com.sbperu.reportecontable.util;
 
 
-import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,7 +13,6 @@ import com.sbperu.reportecontable.dataaccess.ReporteContableDao;
 
 import net.sf.jasperreports.engine.JRException;
 /*import net.sf.jasperreports.engine.JRException;*/
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -27,8 +25,14 @@ public class ReporteContable extends javax.swing.JFrame {
     /**
 	 * 
 	 */
+	String location_pdf;
 	private static final long serialVersionUID = 1L;
-	private JasperReport reportx;
+	//private JasperReport reportx;
+
+	public ReporteContable(String locationpdf) {
+		// TODO Auto-generated constructor stub
+		location_pdf = locationpdf;
+	}
 
 	public void Report_Libro_Sunat_12_13() 
     {
@@ -89,19 +93,24 @@ public class ReporteContable extends javax.swing.JFrame {
                 Date fecFin = new Date(System.currentTimeMillis());
                 parameter.put("fecha_fin", fecFin);
                 jasperPrint = JasperFillManager.fillReport(report1, parameter, beanColDataSource);
+                System.out.println("Iniciando Generacion de Reporte");
                 
 //                File pdf = File.createTempFile("output.", ".pdf");
-                JasperExportManager.exportReportToPdfFile(jasperPrint, "/opt/application.pdf");
+                //-->JasperExportManager.exportReportToPdfFile(jasperPrint, "/opt/application.pdf");
+                JasperExportManager.exportReportToPdfFile(jasperPrint, location_pdf);
+                
+                System.out.println("Finalizado Generacion de reporte en ruta "+location_pdf);
+                
 //                JasperExportManager.exportReportToPdfFile(jasperPrint, "D:\\Backup\\application.pdf");
 //                JasperExportManager.exportReportToPdfStream(jasperPrint, new FileOutputStream(pdf));
 
 //                JasperViewer jasperViewer = new JasperViewer(jasperPrint);
 //                jasperViewer.setVisible(true);
         } catch (JRException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error en Jasper "+ex.getMessage());
 //            logg.e(ex);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error en Generacion Documento "+ex.getMessage());
         }
     }
 }
