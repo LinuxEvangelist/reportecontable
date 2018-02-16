@@ -69,7 +69,7 @@ public class ReporteContable extends javax.swing.JFrame {
             Map parameter = new HashMap();
             parameter.put("fecha_inicio", fecInicio);
             
-         
+            //System.out.println(System.getProperty("user.dir")+"\\src\\main\\java\\com\\sbperu\\reportecontable\\util\\reports\\RptLibroSunat12_13");
             //String documents=newJFileChooser().getFileSystemView().getDefaultDirectory().toString();
 
 
@@ -78,6 +78,12 @@ public class ReporteContable extends javax.swing.JFrame {
 //                JasperReport report1 = JasperCompileManager.compileReport(strJrxml);
                 JasperReport report1;
             report1 = (JasperReport) JRLoader.loadObject(this.getClass().getResource("reports/RptLibroSunat12_13.jasper"));
+           //report1 = (JasperReport) JRLoader.loadObject(this.getClass().getResource("RptLibroSunat12_13.jasper"));
+            //report1 = (JasperReport) JRLoader.loadObjectFromFile("META-INF/jasper/RptLibroSunat12_13.jasper");
+            //report1 = (JasperReport) JRLoader.loadObjectFromFile(System.getProperty("user.dir")+"\\src\\main\\java\\com\\sbperu\\reportecontable\\util\\reports\\RptLibroSunat12_13.jasper");
+            //report1 = (JasperReport) JRLoader.loadObjectFromFile(System.getProperty("user.dir")+"/src/main/java/com/sbperu/reportecontable/util/reports/RptLibroSunat12_13.jasper");
+
+
             //report1 = (JasperReport) JRLoader.loadObject(this.getClass().getResource("/src/main/java/com/sbperu/reportecontable/Reports/RptLibroSunat12_13.jasper"));
                 
                 
